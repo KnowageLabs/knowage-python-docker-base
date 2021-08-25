@@ -9,7 +9,7 @@ node() {
 
   stage('Build') {
     sh 'echo Building ${imageName}:${imageVersion}'
-    builtImage = docker.build("${imageName}:${imageVersion}", "" + commonDockerLabels + commonDockerBuildOpts)
+    builtImage = docker.build("${imageName}:${imageVersion}", "" + commonDockerLabels + commonDockerBuildOpts + " .")
   }
   stage('Push') {
     docker.withRegistry('', 'docker-hub') {
