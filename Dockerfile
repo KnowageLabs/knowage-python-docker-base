@@ -1,11 +1,11 @@
 FROM python:3.7
 
+WORKDIR /app
+
 RUN useradd -M -r knowage \
 	&& chown -R knowage:knowage /app
 
 USER knowage
-
-WORKDIR /app
 
 COPY LICENSE ./
 
