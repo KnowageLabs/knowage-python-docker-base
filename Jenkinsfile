@@ -7,15 +7,21 @@ node() {
   def commonDockerLabels = " --label maintainer=https://www.knowage-suite.com/"
   def commonDockerBuildOpts = " "
 
+  stage('Checkout') {
+    checkout scm
+  }
+
   stage('Build') {
     sh 'echo Building ${imageName}:${imageVersion}'
     builtImage = docker.build("${imageName}:${imageVersion}", "" + commonDockerLabels + commonDockerBuildOpts + " .")
   }
+
   stage('Push') {
     docker.withRegistry('', 'docker-hub') {
         builtImage.push("$imageVersion")
     }
   }
+
   stage('Clean up') {
     def hash = null
  

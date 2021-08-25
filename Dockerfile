@@ -8,7 +8,6 @@ RUN apt-get update \
 	&& pip install gunicorn==20.0.4
 
 RUN useradd -M -r knowage \
-	&& chown -R knowage:knowage /app \
-	&& chmod a+x *.sh
+	&& chown -R knowage:knowage /app
 
 USER knowage
