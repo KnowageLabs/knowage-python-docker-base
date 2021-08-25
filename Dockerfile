@@ -2,6 +2,8 @@ FROM python:3.7
 
 WORKDIR /app
 
+COPY LICENSE .
+
 RUN apt-get update \
 	&& apt-get install --no-install-recommends -y xmlstarlet \
 	&& rm -rf /var/lib/apt/lists/* \
