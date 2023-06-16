@@ -9,7 +9,9 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& pip install gunicorn==20.0.4
 
-RUN useradd -M -r knowage \
+# User home is needed during installation of libraries with pip
+RUN useradd -m -r knowage \
 	&& chown -R knowage:knowage /app
 
 USER knowage
+
