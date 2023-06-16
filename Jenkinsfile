@@ -1,6 +1,6 @@
 node() {
   def imageName = 'knowagelabs/knowage-python-docker-base'
-  def imageVersion = "1.0"
+  def imageVersion = "2.0"
 
   def builtImage = null
 
